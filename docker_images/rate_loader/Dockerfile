@@ -48,7 +48,7 @@ USER $USER
 
 RUN cd notifier && composer install --optimize-autoloader --no-interaction
 
-RUN cd var/www/vhosts/notifier/  \
+RUN cd /var/www/vhosts/notifier/  \
     && /usr/bin/php bin/console cache:clear --no-interaction \
     && /usr/bin/php bin/console cache:warmup --no-interaction
 
