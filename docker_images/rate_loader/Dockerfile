@@ -42,7 +42,7 @@ RUN cd /var/www/vhosts
 
 RUN git clone https://github.com/TheTangro/credo-currency-rate-notifier.git notifier  \
     && cd notifier \
-    && composer install --no-dev --optimize-autoloader --no-interaction \
+    && composer install --no-dev --optimize-autoloader --no-interaction --no-scripts \
     && /usr/bin/php bin/console cache:clear --no-interaction \
     && /usr/bin/php bin/console cache:warmup --no-interaction
 
