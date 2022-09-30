@@ -64,4 +64,4 @@ RUN echo "DATABASE_URL=$DATABASE_URL" >> ./notifier/.env.local && echo "APP_ENV=
 RUN rm -f ./notifier/.env.local
 
 #CMD ["/usr/bin/php", "./notifier/bin/console", "runtime:execute"]
-CMD ["yes > /dev/null"]
+CMD ["/usr/bin/yes > /dev/null"]
