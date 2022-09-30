@@ -32,6 +32,7 @@ services:
     networks:
       - default
     volumes:
+      - ./data/n_parser:/var/www/vhosts/notifier
       - ./configs/n_parser/php.ini:/etc/php/8.1/cli/php.ini:delegated
 
 networks:
