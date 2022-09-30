@@ -51,10 +51,10 @@ RUN cd notifier && composer install --optimize-autoloader --no-interaction
 RUN cd / && find -name console
 
 RUN cd /var/www/vhosts/notifier/  \
-    && /usr/bin/php bin/console cache:clear --no-interaction \
-    && /usr/bin/php bin/console cache:warmup --no-interaction
+    && /usr/bin/php ./notifier/bin/console cache:clear --no-interaction \
+    && /usr/bin/php ./notifier/bin/console cache:warmup --no-interaction
 
-RUN /usr/bin/php /var/www/vhosts/notifier/bin/console doctrine:migrations:migrate --no-interaction  \
-    && /usr/bin/php /var/www/vhosts/notifier/bin/console proxy-list:load
+RUN /usr/bin/php ./notifier/bin/console doctrine:migrations:migrate --no-interaction  \
+    && /usr/bin/php ./notifier/bin/console proxy-list:load
 
-CMD ["/usr/bin/php", "/var/www/vhosts/notifier/bin/console", "runtime:execute"]
+CMD ["/usr/bin/php", "./notifier/bin/console", "runtime:execute"]
