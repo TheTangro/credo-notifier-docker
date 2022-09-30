@@ -59,9 +59,6 @@ RUN echo "DATABASE_URL=$DATABASE_URL" >> ./notifier/.env.local && echo "APP_ENV=
 
 #RUN cd / && /usr/bin/php ./notifier/bin/console doctrine:database:create --no-interaction  \
 #    && /usr/bin/php ./notifier/bin/console doctrine:migrations:migrate --no-interaction
+#RUN /usr/bin/php ./notifier/bin/console proxy-list:load
 
-RUN rm -f ./notifier/.env.local
-
-RUN /usr/bin/php ./notifier/bin/console proxy-list:load
-
-CMD ["/usr/bin/php", "./notifier/bin/console", "runtime:execute"]
+CMD ["/usr/bin/php", "/notifier/bin/console", "runtime:execute"]
