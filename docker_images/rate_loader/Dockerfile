@@ -2,6 +2,9 @@ FROM ubuntu:20.04
 
 LABEL maintainer="TheTangro Docker Images Maintainers"
 
+ARG DATABASE_URL
+ARG APP_ENV
+
 ENV PHP_VERSION=8.1 \
     USER=magento \
     XDEBUG_MODE=off \
@@ -47,6 +50,9 @@ RUN chown -R $USER:$USER notifier/
 USER $USER
 
 RUN cd notifier && composer install --optimize-autoloader --no-interaction
+
+ENV DATABASE_URL=$DATABASE_URL \
+    APP_ENV=$APP_ENV
 
 RUN cd /  \
     && /usr/bin/php ./notifier/bin/console cache:clear --no-interaction \
