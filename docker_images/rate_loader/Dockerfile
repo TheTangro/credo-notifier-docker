@@ -51,14 +51,11 @@ USER $USER
 
 RUN cd notifier && composer install --optimize-autoloader --no-interaction
 
-ENV DATABASE_URL=$DATABASE_URL \
-    APP_ENV=$APP_ENV
-
 RUN cd /  \
     && /usr/bin/php ./notifier/bin/console cache:clear --no-interaction \
     && /usr/bin/php ./notifier/bin/console cache:warmup --no-interaction
 
-RUN cd / && /usr/bin/php ./notifier/bin/console doctrine:migrations:migrate --no-interaction  \
-    && /usr/bin/php ./notifier/bin/console proxy-list:load
+RUN cd / && DATABASE_URL=$DATABASE_URL APP_ENV=$APP_ENV /usr/bin/php ./notifier/bin/console doctrine:migrations:migrate --no-interaction  \
+    && DATABASE_URL=$DATABASE_URL APP_ENV=$APP_ENV /usr/bin/php ./notifier/bin/console proxy-list:load
 
 CMD ["/usr/bin/php", "./notifier/bin/console", "runtime:execute"]
