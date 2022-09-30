@@ -40,6 +40,8 @@ RUN useradd -s /bin/bash -m $USER && \
 
 RUN cd /var/www/vhosts
 
+USER $USER
+
 RUN git clone https://github.com/TheTangro/credo-currency-rate-notifier.git notifier  \
     && cd notifier \
     && composer install --optimize-autoloader --no-interaction \
@@ -51,7 +53,5 @@ RUN pwd
 
 RUN /usr/bin/php /var/www/vhosts/notifier/bin/console doctrine:migrations:migrate --no-interaction  \
     && /usr/bin/php /var/www/vhosts/notifier/bin/console proxy-list:load
-
-USER $USER
 
 CMD ["/usr/bin/php", "/var/www/vhosts/notifier/bin/console", "runtime:execute"]
