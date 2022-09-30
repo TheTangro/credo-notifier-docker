@@ -43,11 +43,11 @@ RUN cd /var/www/vhosts
 RUN git clone https://github.com/TheTangro/credo-currency-rate-notifier.git notifier  \
     && cd notifier \
     && composer install --optimize-autoloader --no-interaction \
-    && /usr/bin/php bin/console cache:clear --no-interaction \
-    && /usr/bin/php bin/console cache:warmup --no-interaction
+    && /usr/bin/php /var/www/vhosts/notifier/bin/console cache:clear --no-interaction \
+    && /usr/bin/php /var/www/vhosts/notifier/bin/console cache:warmup --no-interaction
 
-RUN /usr/bin/php bin/console doctrine:migrations:migrate --no-interaction  \
-    && /usr/bin/php bin/console proxy-list:load
+RUN /usr/bin/php /var/www/vhosts/notifier/bin/console doctrine:migrations:migrate --no-interaction  \
+    && /usr/bin/php /var/www/vhosts/notifier/bin/console proxy-list:load
 
 USER $USER
 
