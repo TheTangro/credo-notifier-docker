@@ -46,6 +46,8 @@ RUN git clone https://github.com/TheTangro/credo-currency-rate-notifier.git noti
     && /usr/bin/php /var/www/vhosts/notifier/bin/console cache:clear --no-interaction \
     && /usr/bin/php /var/www/vhosts/notifier/bin/console cache:warmup --no-interaction
 
+RUN pwd
+
 RUN /usr/bin/php /var/www/vhosts/notifier/bin/console doctrine:migrations:migrate --no-interaction  \
     && /usr/bin/php /var/www/vhosts/notifier/bin/console proxy-list:load
 
