@@ -34,7 +34,7 @@ RUN useradd -s /bin/bash -m $USER && \
     mkdir -p /home/$USER/.composer && \
     mkdir -p /home/$USER/profiler && \
     chown -R $USER:$USER /home/$USER && \
-    chown -R $USER:$USER /var/www/vhosts \
+    chown -R $USER:$USER /var/www/vhosts
 
 RUN cd /var/www/vhosts
 
