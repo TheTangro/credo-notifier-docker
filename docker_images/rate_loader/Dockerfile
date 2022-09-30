@@ -10,7 +10,7 @@ ENV PHP_VERSION=8.1 \
     XDEBUG_MODE=off \
     TZ=Europe/Kiev
 RUN apt update
-RUN apt install -y git
+RUN apt install -y git vim
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN apt install -y software-properties-common
