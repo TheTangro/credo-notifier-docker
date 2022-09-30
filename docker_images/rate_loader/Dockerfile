@@ -40,12 +40,13 @@ RUN useradd -s /bin/bash -m $USER && \
 
 RUN cd /var/www/vhosts
 
-RUN git clone https://github.com/TheTangro/credo-currency-rate-notifier.git notifier  \
-    && cd notifier
+RUN git clone https://github.com/TheTangro/credo-currency-rate-notifier.git notifier
+
+RUN chown -R $USER:$USER notifier/
 
 USER $USER
 
-RUN composer install --optimize-autoloader --no-interaction \
+RUN cd notifier && composer install --optimize-autoloader --no-interaction \
 
 RUN /usr/bin/php /var/www/vhosts/notifier/bin/console cache:clear --no-interaction \
     && /usr/bin/php /var/www/vhosts/notifier/bin/console cache:warmup --no-interaction
