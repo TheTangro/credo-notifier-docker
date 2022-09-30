@@ -23,7 +23,6 @@ services:
     container_name: n_parser
     hostname: n_parser
     image: local/parser:1.0
-    working_dir: /var
     depends_on:
       - "n_postgres"
     build:
