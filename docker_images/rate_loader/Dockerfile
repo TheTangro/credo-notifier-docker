@@ -31,7 +31,8 @@ RUN chmod +x /usr/local/bin/*
 
 
 RUN useradd -s /bin/bash -m $USER && \
-    mkdir -p /var/www/vhosts \
+    mkdir -p /var/www/vhosts && \
+    chown -R $USER:$USER /var/www/vhosts && \
     mkdir -p /home/$USER/.composer && \
     mkdir -p /home/$USER/profiler && \
     chown -R $USER:$USER /home/$USER && \
