@@ -48,10 +48,10 @@ USER $USER
 
 RUN cd notifier && composer install --optimize-autoloader --no-interaction
 
+RUN pwd && ls -lah
+
 RUN /usr/bin/php /var/www/vhosts/notifier/bin/console cache:clear --no-interaction \
     && /usr/bin/php /var/www/vhosts/notifier/bin/console cache:warmup --no-interaction
-
-RUN pwd && ls -lah
 
 RUN /usr/bin/php /var/www/vhosts/notifier/bin/console doctrine:migrations:migrate --no-interaction  \
     && /usr/bin/php /var/www/vhosts/notifier/bin/console proxy-list:load
