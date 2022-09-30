@@ -29,6 +29,9 @@ services:
       context: ./docker_images/rate_loader/
       dockerfile: Dockerfile
     restart: unless-stopped
+    environment:
+      DATABASE_URL: "postgresql://pguser:pgpassword@n_postgres:5432/notifier?serverVersion=11&charset=utf8"
+      APP_ENV: "dev"
     networks:
       - default
     volumes:
