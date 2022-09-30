@@ -1,6 +1,6 @@
 FROM ubuntu:20.04
 
-LABEL maintainer="TheTangro Docker Images Maintainers"
+LABEL maintainer="parser instance "
 
 ARG DATABASE_URL
 ARG APP_ENV
