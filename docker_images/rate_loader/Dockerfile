@@ -52,8 +52,7 @@ USER $USER
 RUN cd notifier && composer install --optimize-autoloader --no-interaction --no-scripts
 
 RUN cd /  \
-    && /usr/bin/php ./notifier/bin/console cache:clear --no-interaction \
-    && /usr/bin/php ./notifier/bin/console cache:warmup --no-interaction
+    && /usr/bin/php ./notifier/bin/console cache:clear --no-interaction
 
 RUN echo "DATABASE_URL=$DATABASE_URL" >> ./notifier/.env.local && echo "APP_ENV=$APP_ENV" >> ./notifier/.env.local
 
