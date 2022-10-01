@@ -49,7 +49,7 @@ RUN chown -R $USER:$USER notifier/
 
 USER $USER
 
-RUN cd notifier && composer install --optimize-autoloader --no-interaction
+RUN cd notifier && composer install --optimize-autoloader --no-interaction --no-scripts
 
 RUN cd /  \
     && /usr/bin/php ./notifier/bin/console cache:clear --no-interaction \
